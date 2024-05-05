@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Recent Tweets</h2>
+<div class="tweets">
+    {% for tweet in tweets %}
+    <div class="tweet">
+        <div class="user-info">
+            <span class="user-name">{{ tweet.username }}</span>
+            <span class="url">{{ tweet.url }}</span>
+        </div>
+        <div class="tweet-content">
+            <p class="tweet-text">{{ tweet.text }}</p>
+	    <p class="created-at">Created at: {{ tweet.created_at }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<div>
+    {% if page_num > 1 %}
+        <a href="?page={{ page_num - 1 }}" class="submit">Previous</a>
+    {% endif %}
+
+    Page {{ page_num }} 
+
+    {% if tweets|length == 20 %}
+        <a href="?page={{ page_num + 1 }}" class="submit">Next</a>
+    {% endif %}
+</div>
+
+
+{% endblock %}

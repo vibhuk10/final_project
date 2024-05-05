@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter Clone</title>
+</head>
+
+<body>
+    <h1><a href='/'>Twitter Clone</a></h1>
+    <ul>
+        <! --<li><a href='/search'>Search</a></li>-->
+        <li><a href='/'>Home</a></li>
+        {% if logged_in %}
+        <! --<li><a href='/create_message'>Create Tweet</a></li>
+        <li><a href='/logout'>Logout</a></li>
+        {% else %}
+        <li><a href='/login'>Login</a></li>
+        <li><a href='/create_account'>Create Account</a></li>-->
+        {% endif %}
+    </ul>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
