@@ -1,0 +1,50 @@
+tweet 36924 FAIL (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "tweets_id_urls_key"
+DETAIL:  Key (id_urls)=(188) already exists.
+
+[SQL: 
+            INSERT INTO tweets (id_users, id_urls, text) VALUES (%(id_users)s, %(id_urls)s, %(text)s);
+            ]
+[parameters: {'id_users': 147043, 'id_urls': 188, 'text': 'l81XypJhUkh6tt0uYupkGQbSLta'}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj)
+tweet 489098 FAIL (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "tweets_id_urls_key"
+DETAIL:  Key (id_urls)=(229) already exists.
+
+[SQL: 
+            INSERT INTO tweets (id_users, id_urls, text) VALUES (%(id_users)s, %(id_urls)s, %(text)s);
+            ]
+[parameters: {'id_users': 757462, 'id_urls': 229, 'text': 'fUdbcp0hDTFhccHp9k6E09AmT'}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj)
+tweet 506614 FAIL (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "tweets_id_urls_key"
+DETAIL:  Key (id_urls)=(221) already exists.
+
+[SQL: 
+            INSERT INTO tweets (id_users, id_urls, text) VALUES (%(id_users)s, %(id_urls)s, %(text)s);
+            ]
+[parameters: {'id_users': 283816, 'id_urls': 221, 'text': 'qu9fxQoiNFfQIp3iAQZvJ71NBXo0n9NAmMXyFWLh'}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj)
+tweet 512832 FAIL (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "tweets_id_urls_key"
+DETAIL:  Key (id_urls)=(183) already exists.
+
+[SQL: 
+            INSERT INTO tweets (id_users, id_urls, text) VALUES (%(id_users)s, %(id_urls)s, %(text)s);
+            ]
+[parameters: {'id_users': 668018, 'id_urls': 183, 'text': 'GQNucZFwn9WrVCMa0pyeWvCH'}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj)
+tweet 577765 FAIL (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "tweets_id_urls_key"
+DETAIL:  Key (id_urls)=(250) already exists.
+
+[SQL: 
+            INSERT INTO tweets (id_users, id_urls, text) VALUES (%(id_users)s, %(id_urls)s, %(text)s);
+            ]
+[parameters: {'id_users': 679053, 'id_urls': 250, 'text': 'heXCNZTATzTSTtmDwV7taKiE0WSFDRNFU8Ex'}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj)
+tweet 847509 FAIL (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "tweets_id_urls_key"
+DETAIL:  Key (id_urls)=(193) already exists.
+
+[SQL: 
+            INSERT INTO tweets (id_users, id_urls, text) VALUES (%(id_users)s, %(id_urls)s, %(text)s);
+            ]
+[parameters: {'id_users': 789548, 'id_urls': 193, 'text': 'c6EuZ5HAimqmSbwFLFln'}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj)
+80294.47user 1493.18system 25:06:11elapsed 90%CPU (0avgtext+0avgdata 2442704maxresident)k
+1544inputs+8outputs (7major+460017354minor)pagefaults 0swaps

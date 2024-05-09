@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    .tweet-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+
+    .tweet-table th,
+    .tweet-table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    .tweet-table th {
+        background-color: #f2f2f2;
+    }
+
+    .tweet-table tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    .tweet-table tr:hover {
+        background-color: #ddd;
+    }
+
+    .highlight {
+        background-color: yellow;
+        font-weight: bold;
+    }
+</style>
+
+<h2>Search Results</h2>
+<form action="/search" method="GET">
+    <input type="text" name="query" placeholder="Enter your search query">
+    <button type="submit">Search</button>
+</form>
+
+{% if query %}
+<!-- Display search results -->
+<table class="tweet-table">
+    <thead>
+        <tr>
+            <th>User</th>
+            <th>Text</th>
+            <th>Created at</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for message in messages %}
+        <tr>
+            <td>{{ message['username'] }}</td>
+            <td>
+                {% for word in message.text.split() %}
+                    {% if word.lower() in query.lower() %}
+                        <span class="highlight">{{ word | safe }}</span>
+                    {% else %}
+                        {{ word | safe }}
+                    {% endif %}
+                    &nbsp;
+                {% endfor %}
+            </td>
+            <td>{{ message['created_at'] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<!-- Display default tweets -->
+<table class="tweet-table">
+    <thead>
+        <tr>
+            <th>User</th>
+            <th>Text</th>
+            <th>Created at</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for tweet in messages %}
+        <tr>
+            <td>{{ tweet.username }}</td>
+            <td>{{ tweet.text }}</td>
+            <td>{{ tweet.created_at }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+<div>
+    {% if page_num > 1 %}
+    <a href="?query={{ query|urlencode }}&page={{ page_num - 1 }}">Previous</a>
+    {% endif %}
+
+    Page {{ page_num }}
+
+    {% if messages|length == 20 %}
+    <a href="?query={{ query|urlencode }}&page={{ page_num + 1 }}">Next</a>
+    {% endif %}
+</div>
+{% endblock %}
+

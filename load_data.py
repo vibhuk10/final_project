@@ -27,10 +27,10 @@ def create_random_word2(length):
 
 def create_users(length):
     for i in range(length):
-        sql = sqlalchemy.sql.text("""
-        INSERT INTO users (username, password) VALUES (:username, :password);
-        """)
         try:
+            sql = sqlalchemy.sql.text("""
+            INSERT INTO users (username, password) VALUES (:username, :password);
+             """)
             res = connection.execute(sql, {
                 'username': create_random_word2(random.randint(8, 12)),
                 'password': create_random_word2(random.randint(8, 12))
@@ -40,13 +40,13 @@ def create_users(length):
 
 def create_urls(length):
     for i in range(length):
-        sql = sqlalchemy.sql.text("""
-        INSERT INTO tweet_urls (url) VALUES (:url);
-        """)
-        try:
+        try:        
+            sql = sqlalchemy.sql.text("""
+            INSERT INTO tweet_urls (url) VALUES (:url);
+            """)
             res = connection.execute(sql, {
                 'url': create_random_word2(random.randint(13, 17)),
-                })
+            })
         except sqlalchemy.exc.IntegrityError as e:
             print("url",i,"FAIL",e)
 
@@ -66,13 +66,12 @@ def create_tweets(length):
     url_ids = [tup[0] for tup in res.fetchall()]
 
     for i in range(length):
-        chosen_url_id =  random.choice(url_ids)
-        url_ids.remove(chosen_url_id)
-
-        sql = sqlalchemy.sql.text("""
-        INSERT INTO tweets (id_users, id_urls, text) VALUES (:id_users, :id_urls, :text);
-        """)
         try:
+            chosen_url_id =  random.choice(url_ids)
+            url_ids.remove(chosen_url_id)
+            sql = sqlalchemy.sql.text("""
+            INSERT INTO tweets (id_users, id_urls, text) VALUES (:id_users, :id_urls, :text);
+            """)
             res = connection.execute(sql, {
                 'id_users': random.choice(user_ids),
                 'id_urls': chosen_url_id,
@@ -81,8 +80,8 @@ def create_tweets(length):
         except sqlalchemy.exc.IntegrityError as e:
             print("tweet",i,"FAIL",e)
 
-create_users(50)
-create_urls(50)
-create_tweets(50)
+create_users(100)
+create_urls(1000)
+create_tweets(100)
 
 connection.close()

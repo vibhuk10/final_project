@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Create a new account</h2>
+
+{% if missing_value %}
+<p class="red">
+ERROR: Invalid username or password.
+</p>
+{% elif pass_not_match %}
+<p class="red">
+ERROR: Your passwords do not match. Try again.
+</p>
+{% elif exists %}
+<p class="red">
+ERROR: That username already exists. Try again.
+</p>
+{% endif %}
+
+
+<form action="/create_account" method="POST">
+    <table>
+        <tr>
+            <td>username</td>
+            <td><input type="text" name="username_input"></td>
+        </tr>
+        <tr>
+            <td>password</td>
+            <td><input type="password" name="password_input"></td>
+        </tr>
+        <tr>
+            <td>retype password</td>
+            <td><input type="password" name="password_confirm_input"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="create account" class="submit"></td>
+        </tr>
+    </table>
+</form>
+{% endblock %}
