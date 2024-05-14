@@ -1,4 +1,5 @@
-# flask-on-docker
+# Twitter Clone Final Project
+[![test](https://github.com/vibhuk10/final_project/actions/workflows/test.yml/badge.svg)](https://github.com/vibhuk10/final_project/actions/workflows/test.yml)
 
 ## Project Overview
 In this project, I created a fully working web service using a modified version of the Instagram tech stack. In this web service, the user can upload an image (http://localhost:3137/upload) and then they can view their image from a new link (http://localhost:3137/media/IMAGE_FILE_NAME)
